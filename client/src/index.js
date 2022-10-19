@@ -11,7 +11,7 @@ var loggedIn = false
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Router basename='/Tuneway'>
+    <Router>
       <Routes>
         <Route
           path="/"
