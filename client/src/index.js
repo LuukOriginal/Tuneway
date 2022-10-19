@@ -5,6 +5,7 @@ import Home from './pages/Home/Home'
 import Dashboard from './pages/Dashboard/Dashboard';
 import Login from './pages/Login/Login';
 import NotFound from './pages/NotFound/NotFound';
+import './style.css'
 
 var loggedIn = false
 
