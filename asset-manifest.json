@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.js": "/Tuneway/static/js/main.ff8c9ccd.js",
-    "index.html": "/Tuneway/index.html",
-    "main.ff8c9ccd.js.map": "/Tuneway/static/js/main.ff8c9ccd.js.map"
+    "main.js": "/static/js/main.ff8c9ccd.js",
+    "index.html": "/index.html",
+    "main.ff8c9ccd.js.map": "/static/js/main.ff8c9ccd.js.map"
   },
   "entrypoints": [
     "static/js/main.ff8c9ccd.js"
