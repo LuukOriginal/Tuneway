@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/Tuneway/static/js/main.60c1c76a.js",
+    "main.js": "/Tuneway/static/js/main.ff8c9ccd.js",
     "index.html": "/Tuneway/index.html",
-    "main.60c1c76a.js.map": "/Tuneway/static/js/main.60c1c76a.js.map"
+    "main.ff8c9ccd.js.map": "/Tuneway/static/js/main.ff8c9ccd.js.map"
   },
   "entrypoints": [
-    "static/js/main.60c1c76a.js"
+    "static/js/main.ff8c9ccd.js"
   ]
 }
