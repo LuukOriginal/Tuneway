@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import {BrowserRouter as Router, Route, Routes, Navigate} from 'react-router-dom'
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from './pages/Home/Home'
 import Dashboard from './pages/Dashboard/Dashboard';
 import Login from './pages/Login/Login';

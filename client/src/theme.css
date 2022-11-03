@@ -1,0 +1,85 @@
+/* Variables */
+* {
+    --Primary : #5865F2;
+    --Secondairy : #4752C4;
+}
+
+.theme-light {
+    --text-normal: #2e3338;
+    --text-muted: #747f8d;
+    --background-primary: #fff;
+    --background-secondary: #f2f3f5;
+    --background-secondary-alt: #ebedef;
+    --background-tertiary: #e3e5e8;
+    --background-modifier-hover: rgba(116,127,141,0.08);
+    --background-modifier-active: rgba(116,127,141,0.16);
+}
+
+.theme-dark {
+    --text-normal: #dcddde;
+    --text-muted: #72767d;
+    --background-primary: #36393f;
+    --background-secondary: #2f3136;
+    --background-secondary-alt: #292b2f;
+    --background-tertiary: #202225;
+    --background-modifier-hover: rgba(79,84,92,0.16);
+    --background-modifier-active: rgba(79,84,92,0.24);
+}
+
+/* Style Classes */
+.primary {
+    background-color: var(--background-primary);
+}
+
+.secondary {
+    background-color: var(--background-secondary);
+}
+
+.secondary-alt {
+    background-color: var(--background-secondary-alt);
+}
+
+.tertiary {
+    background-color: var(--background-tertiary);
+}
+
+.primary, .secondary, .tertiary {
+    color: var(--text-normal);
+}
+
+/* Text Style Classes */
+
+.text-muted {
+    color: var(--text-muted);
+}
+
+/* General Style */
+body {
+    background-color: var(--background-primary);
+    color: var(--text-normal);
+
+    font-family: Whitney,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    user-select: none;
+}
+
+/* Special Styles */
+.win-btn-reg:hover {
+    background-color: var(--background-modifier-hover);
+}
+
+.win-btn-reg:active {
+    background-color: var(--background-modifier-active);
+}
+
+/* Buttons */
+button.primary {
+    background-color: var(--Primary);
+    color: var(--text-normal);
+    border-radius: 10px;
+    border-width: 0px;
+    transition: all 0.2s;
+}
+
+button.primary:hover {
+    background-color: var(--Secondairy);
+}
