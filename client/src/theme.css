@@ -7,6 +7,7 @@
 .theme-light {
     --text-normal: #2e3338;
     --text-muted: #747f8d;
+    --text-label: #535353;
     --background-primary: #fff;
     --background-secondary: #f2f3f5;
     --background-secondary-alt: #ebedef;
@@ -18,12 +19,14 @@
 .theme-dark {
     --text-normal: #dcddde;
     --text-muted: #72767d;
-    --background-primary: #36393f;
+    --text-label: #ababab;
+    --background-primary: #242424;
     --background-secondary: #2f3136;
     --background-secondary-alt: #292b2f;
     --background-tertiary: #202225;
     --background-modifier-hover: rgba(79,84,92,0.16);
     --background-modifier-active: rgba(79,84,92,0.24);
+
 }
 
 /* Style Classes */
@@ -49,8 +52,20 @@
 
 /* Text Style Classes */
 
-.text-muted {
+.muted-text {
     color: var(--text-muted);
+}
+
+.text-primary {
+    color: var(--primary)
+}
+
+label {
+    color: var(--text-label);
+}
+
+a.text-primary{
+    text-decoration: none;
 }
 
 /* General Style */
@@ -58,7 +73,9 @@ body {
     background-color: var(--background-primary);
     color: var(--text-normal);
 
-    font-family: Whitney,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
     user-select: none;
 }
 
@@ -72,14 +89,16 @@ body {
 }
 
 /* Buttons */
-button.primary {
-    background-color: var(--Primary);
+.btn-primary {
+    background-color: var(--primary);
     color: var(--text-normal);
-    border-radius: 10px;
+    border-radius: 25px;
     border-width: 0px;
     transition: all 0.2s;
+    height: 30px;
+    /* old: heigth 25, radius 5 */
 }
 
-button.primary:hover {
-    background-color: var(--Secondairy);
+.btn-primary:hover {
+    background-color: var(--secondairy);
 }

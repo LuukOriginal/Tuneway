@@ -1,34 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import {BrowserRouter as Router, Route, Routes, Navigate} from 'react-router-dom'
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Home from './pages/Home/Home'
-import Dashboard from './pages/Dashboard/Dashboard';
-import Login from './pages/Login/Login';
-import NotFound from './pages/NotFound/NotFound';
-import './style.css'
 
-var loggedIn = false
+import App from './App'
+import './style.css'
+import './theme.css'
+
+// const params = new Proxy(new URLSearchParams(window.location.search), {
+//   get: (searchParams, prop) => searchParams.get(prop),
+// });
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Router>
-      <Routes>
-        <Route
-          path="/"
-          element={loggedIn ? <Navigate to="/dashboard" replace /> : <Home />}
-        />
-        <Route
-          path="dashboard"
-          element={loggedIn ? <Dashboard /> : <Navigate to="/login" replace />}
-        />
-        <Route
-          path="login"
-          element={loggedIn ? <Navigate to="/dashboard" replace /> : <Login/>}
-        />
-        <Route path='*' element={<NotFound/>}/>
-      </Routes>
-    </Router>
+    <App/>
   </React.StrictMode>
 );

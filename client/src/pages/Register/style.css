@@ -1,0 +1,55 @@
+#register-form {
+    display: flex;
+    flex-direction: column;
+}
+
+#register-form-div {
+    min-width: 250px;
+    width: 30%;
+}
+
+.required-star {
+    color: var(--primary);
+}
+
+.register-input {
+    margin-bottom: 10px;
+    border-color: var(--);
+
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+
+    transition: .5s;
+}
+
+.register-input:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+#register-options-div {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    font-size:small;
+}
+
+#agree-div {
+    display: flex;
+    align-content: center;
+}
+
+#agree-input {
+    margin-bottom: 0;
+    margin-right: 5px;
+}
+
+#submit-input {
+    margin-top: 5px;
+}
+
+#register-text {
+    margin-top: 5px;
+    font-size: small;
+}
