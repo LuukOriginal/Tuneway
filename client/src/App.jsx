@@ -9,6 +9,8 @@ import Register from './pages/Register/Register'
 import NotFound from './pages/NotFound/NotFound';
 
 import React, { Component } from 'react'
+import ResetPassword from './pages/ResetPassword/ResetPassword';
+import VerifyEmail from './pages/VerifyEmail/VerifyEmail';
 
 export default class App extends Component {
   setToken = (token) => {
@@ -51,8 +53,16 @@ export default class App extends Component {
           <Route
             path="register"
             element={this.state.token  ? <Navigate to="/dashboard" replace /> : <Registration>
-              <Register/>
+              <Register setToken={this.setToken}/>
             </Registration>}
+          />
+          <Route
+            path="reset-password"
+            element={<ResetPassword/>}
+          />
+          <Route
+            path="verify-email"
+            element={<VerifyEmail/>}
           />
           <Route path='*' element={<NotFound/>}/>
         </Routes>

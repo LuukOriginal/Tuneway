@@ -1,10 +1,31 @@
-export default async function loginUser(credentials) {
-    return fetch('http://localhost:3001/login', {
+export async function loginUser(credentials) {
+    return fetch('http://192.168.2.84:3001/api/v1/auth/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(credentials)
     })
-    .then(data => data.json())
+    .then(async (data) => {
+        return {
+            success: data.status === 200,
+            body: await data.json()
+        }
+    })
+}
+
+export async function registerUser(credentials) {
+    return fetch('http://192.168.2.84:3001/api/v1/auth/register', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(credentials)
+    })
+    .then(async (data) => {
+        return {
+            success: data.status === 201,
+            body: await data.json()
+        }
+    })
 }

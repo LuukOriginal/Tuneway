@@ -32,7 +32,7 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 5px;
-    font-size:small;
+    font-size: small;
 }
 
 #remember-div {
@@ -57,6 +57,25 @@
 #register-text {
     margin-top: 5px;
     font-size: small;
+}
+
+#error-message {
+    background-color: #f59595;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: #a32b2b;
+}
+
+#error-close {
+    font-size: 25px;
+    cursor: pointer;
 }
 
 /* #username-container {
