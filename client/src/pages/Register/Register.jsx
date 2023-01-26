@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { registerUser } from '../../hooks/useAuth'
+import PasswordStrength from './components/PasswordStrength/PasswordStrength';
 import './style.css'
 
 const validator = require('validator');
@@ -10,18 +11,20 @@ export default class Register extends Component {
     email: "",
     password: "",
     passwordRepeated: "",
-    termsChecked: false
+    termsChecked: false,
+
   }
 
   handleSubmit = async e => {
     e.preventDefault();
 
-    const nameValid = this.state.name.match(/^[\\x00-\\x7F]{3,20}$/) // TODO finish validation
+    const nameValid = !!this.state.name // TODO finish validation
     const emailValid = validator.isEmail(this.state.email)
-    const passwordValid = this.state.password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/)// TODO add password strength meter
+    const passwordValid = !!this.state.password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/)// TODO add password strength meter
     const termsValid = this.state.termsChecked
+    const passwordsMatch = (this.state.password === this.state.passwordRepeated)
 
-    if(!nameValid || !emailValid || !passwordValid || !termsValid) return;
+    if(!nameValid || !emailValid || !passwordValid || !termsValid || !passwordsMatch) return;
 
     const registerRes = await registerUser({
       name: this.state.name,
@@ -52,12 +55,7 @@ export default class Register extends Component {
           <label htmlFor="password-input">Password<label className='required-star'>*</label></label>
           <input id="password-input" className='register-input primary' onChange={e => this.setState({password: e.target.value})} type="password" form="register-form" placeholder="Password" required/>
 
-          <div id='strength-box'>
-            <div id='strength-bar'>
-              <div id='strength-fill'/>
-            </div>
-            <span id='strength-label'>weak</span>
-          </div>
+          <PasswordStrength password={this.state.password}/>
 
           <label htmlFor="repeat-password-input">Repeat Password<label className='required-star'>*</label></label>
           <input id="repeat-password-input" className='register-input primary' onChange={e => this.setState({passwordRepeated: e.target.value})} type="password" form="register-form" placeholder="Password" required/>
@@ -73,6 +71,9 @@ export default class Register extends Component {
           <input className='btn-primary' id="submit-input" type="submit" value="Sign Up"/>
           <div id="register-text">
             Already have an Account? <a className='text-primary' href='login'>Sign in</a>
+          </div>
+          <div>
+            {this.state.Error}
           </div>
         </form>
       </div>

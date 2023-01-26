@@ -1,0 +1,30 @@
+#strength-box {
+    height: 4px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+#strength-bar {
+    height: 100%;
+    width: 60%;
+    background-color: gray;
+    border-radius: 5px;
+}
+
+#strength-fill {
+    background-color: #ac0000;
+    transition: .5s;
+    width: 15%;
+    height: 100%;
+    border-radius: 5px;
+}
+
+#strength-label {
+    color: #ac0000;
+    margin-left: 5%;
+    font-size: smaller;
+    white-space: nowrap;
+    width: 25%;
+}

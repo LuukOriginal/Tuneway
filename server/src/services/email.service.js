@@ -2,7 +2,7 @@ const nodemailer = require('nodemailer');
 const config = require('../config/config');
 const logger = require('../config/logger');
 
-const WebsiteUrl = "http://192.168.2.84:3000"
+const WebsiteUrl = "http://localhost:3000"
 
 const transport = nodemailer.createTransport(config.email.smtp);
 /* istanbul ignore next */

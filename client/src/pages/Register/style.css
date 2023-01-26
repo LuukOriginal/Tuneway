@@ -56,30 +56,3 @@
     margin-top: 5px;
     font-size: small;
 }
-
-#strength-box {
-    height: 5px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
-#strength-bar {
-    height: 100%;
-    width: 70%;
-    background-color: gray;
-    border-radius: 5px;
-}
-
-#strength-fill {
-    background-color: #f14949;
-    width: 15%;
-    height: 100%;
-    border-radius: 5px;
-}
-
-#strength-label {
-    color: #f14949;
-    margin-left: 5%;
-}
