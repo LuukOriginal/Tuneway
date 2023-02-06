@@ -17,35 +17,36 @@ export default class PasswordStrength extends Component {
                 return {
                     text: "Very weak",
                     percentage: 20,
-                    color: '#ac0000'
+                    color: 'var(--strength-veryweak)'
                 }
             case 1: 
                 return {
                     text: "Weak",
                     percentage: 40,
-                    color: '#f14949'
+                    color: 'var(--strength-weak)'
                 }
             case 2:
                 return {
                     text: "Moderate",
                     percentage: 60,
-                    color: '#edba39'
+                    color: 'var(--strength-moderate)'
                 }
             case 3: 
                 return {
                     text: "Good",
                     percentage: 80,
-                    color: '#52b355' //make blue or keep green
+                    color: 'var(--strength-good)' //make blue or keep green
                 }
             case 4:
                 return {
                     text: "Strong",
                     percentage: 100,
-                    color: '#35600f'
+                    color: 'var(--strength-strong)'
                 }
             default:
                 return {
-                    text: "Error"
+                    text: "Error",
+                    color: 'var(--error)'
                 }
         }
     }

@@ -3,7 +3,7 @@ import { registerUser } from '../../hooks/useAuth'
 import PasswordStrength from './components/PasswordStrength/PasswordStrength';
 import './style.css'
 
-const validator = require('validator');
+import validator from 'validator';
 
 export default class Register extends Component {
   state = {
@@ -13,18 +13,34 @@ export default class Register extends Component {
     passwordRepeated: "",
     termsChecked: false,
 
+    formErrors: {
+      username: '', 
+      email: '',
+      password: '',
+      passwordRepeat: '',
+    },
+
+    isValid: {
+      username: false,
+      email: false,
+      password: false,
+      passwordRepeat: false,
+      form: false
+    },
   }
 
   handleSubmit = async e => {
     e.preventDefault();
 
-    const nameValid = !!this.state.name // TODO finish validation
-    const emailValid = validator.isEmail(this.state.email)
-    const passwordValid = !!this.state.password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/)// TODO add password strength meter
-    const termsValid = this.state.termsChecked
-    const passwordsMatch = (this.state.password === this.state.passwordRepeated)
+    // const nameValid = !!this.state.name // TODO finish validation
+    // const emailValid = validator.isEmail(this.state.email)
+    // const passwordValid = !!this.state.password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/)// TODO add password strength meter
+    // const termsValid = this.state.termsChecked
+    // const passwordsMatch = (this.state.password === this.state.passwordRepeated)
 
-    if(!nameValid || !emailValid || !passwordValid || !termsValid || !passwordsMatch) return;
+    // if(!nameValid || !emailValid || !passwordValid || !termsValid || !passwordsMatch) return;
+
+    //TODO add valitation hook to check for invalid form data and display it next to the title label
 
     const registerRes = await registerUser({
       name: this.state.name,
@@ -41,28 +57,96 @@ export default class Register extends Component {
     }
   }
 
+  handleChange = async (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+
+    this.setState({
+      [name]: value
+    }, () => { 
+      this.validateField(name, value) 
+    })
+  }
+
+  validateField(name, value) {
+    var formErrors = this.state.formErrors
+    var isValid = this.state.isValid
+
+    switch(name) {
+      case 'username':
+        const usernameLength = value.length
+        if(usernameLength < 3) {
+          isValid.username = false
+          formErrors.username = "Need at least 3 characters"
+        } else if(usernameLength > 20) {
+          isValid.username = false
+          formErrors.username = "Can only have 20 characters"
+        } else {
+          isValid.username = true
+          formErrors.username = ''
+        }
+        break;
+      case 'email':
+        isValid.email = validator.isEmail(value)
+
+        formErrors.email = isValid.email ? '' : "Email is invalid"
+        break;
+      case 'password':
+        break;
+      case 'passwordRepeat':
+        isValid.passwordRepeat = value === this.state.password
+        formErrors.passwordRepeat = isValid.passwordRepeat ? '' : "Passwords do not match"
+        break;
+      case 'agreedTOS':
+        break;
+      default:
+        break;
+    }
+
+    this.setState({
+      formErrors: formErrors,
+      isValid: isValid
+    })
+  }
+
+  validateForm() {
+    //validate if form is valid and set the state
+  }
+
   render() {
     return (
       <div id="register-form-div">
         <h3>Sign Up</h3>
-        <form id="register-form" onSubmit={this.handleSubmit}>
-          <label htmlFor="name-input">Username<label className='required-star'>*</label></label>
-          <input id="name-input" className='register-input primary' onChange={e => this.setState({name: e.target.value})} type="text" form="register-form" placeholder="John Doe" size="30" autoComplete="off" required/>
+        <form id="register-form" onSubmit={this.handleSubmit} noValidate>
+          <div className="input-info">
+            <label htmlFor="name-input">Username<label className='required-star'>*</label></label>
+            <span className="input-error">{this.state.formErrors.username}</span>
+          </div>
+          <input id="name-input" name="username" className='register-input primary' onChange={this.handleChange} type="text" form="register-form" placeholder="John Doe" size="30" autoComplete="off" required/>
 
-          <label htmlFor="email-input">Email<label className='required-star'>*</label></label>
-          <input id="email-input" className='register-input primary' onChange={e => this.setState({email: e.target.value})} type="email" form="register-form" placeholder="someone@example.com" size="30" autoComplete="off" required/>
+          <div className="input-info">
+            <label htmlFor="email-input">Email<label className='required-star'>*</label></label>
+            <span className="input-error">{this.state.formErrors.email}</span>
+          </div>
+          <input id="email-input" name='email' className='register-input primary' onChange={this.handleChange} type="email" form="register-form" placeholder="someone@example.com" size="30" autoComplete="off" required/>
 
-          <label htmlFor="password-input">Password<label className='required-star'>*</label></label>
-          <input id="password-input" className='register-input primary' onChange={e => this.setState({password: e.target.value})} type="password" form="register-form" placeholder="Password" required/>
+          <div className="input-info">
+            <label htmlFor="password-input">Password<label className='required-star'>*</label></label>
+            <span className="input-error">{this.state.formErrors.password}</span>
+          </div>
+          <input id="password-input" name='password' className='register-input primary' onChange={this.handleChange} type="password" form="register-form" placeholder="Password" required/>
 
           <PasswordStrength password={this.state.password}/>
 
-          <label htmlFor="repeat-password-input">Repeat Password<label className='required-star'>*</label></label>
-          <input id="repeat-password-input" className='register-input primary' onChange={e => this.setState({passwordRepeated: e.target.value})} type="password" form="register-form" placeholder="Password" required/>
+          <div className="input-info">
+            <label htmlFor="repeat-password-input">Repeat Password<label className='required-star'>*</label></label>
+            <span className="input-error">{this.state.formErrors.passwordRepeat}</span>
+          </div>
+          <input id="repeat-password-input" name='passwordRepeat' className='register-input primary' onChange={this.handleChange} type="password" form="register-form" placeholder="Password" required/>
 
           <div id="register-options-div">
             <div id="agree-div">
-              <input id="agree-input" className='register-input' form='register-form' checked={this.state.termsChecked} onChange={e => this.setState({termsChecked: !this.state.termsChecked})} type="checkbox" />
+              <input id="agree-input" name='agreedTOS' className='register-input' form='register-form' checked={this.state.agreedTOS} onChange={this.handleChange} type="checkbox" />
               <label htmlFor="agree-input">
                 I agree to the <a href='terms-of-service' className='text-primary'>Terms & Conditions<label className='required-star'>*</label></a>
                 </label>

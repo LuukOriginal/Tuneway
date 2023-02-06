@@ -1,3 +1,11 @@
+*{
+    --strength-strong: #35600f;
+    --strength-good: #52b355;
+    --strength-moderate: #edba39;
+    --strength-weak: var(--error);
+    --strength-veryweak: #ac0000;
+}
+
 #strength-box {
     height: 4px;
     display: flex;
@@ -14,7 +22,7 @@
 }
 
 #strength-fill {
-    background-color: #ac0000;
+    background-color: var(--strength-veryweak);
     transition: .5s;
     width: 15%;
     height: 100%;
@@ -22,7 +30,7 @@
 }
 
 #strength-label {
-    color: #ac0000;
+    color: var(--strength-veryweak);
     margin-left: 5%;
     font-size: smaller;
     white-space: nowrap;

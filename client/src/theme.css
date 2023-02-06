@@ -1,7 +1,9 @@
 /* Variables */
 * {
-    --primary : #5865F2;
-    --secondairy : #4752C4;
+    --primary: #5865F2;
+    --secondairy: #4752C4;
+
+    --error: #f14949;
 }
 
 .theme-light {

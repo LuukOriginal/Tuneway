@@ -22,10 +22,6 @@
     transition: .5s;
 }
 
-.input-error {
-    border-color: #f14949;
-}
-
 .register-input:focus {
     outline: none;
     border-color: var(--primary);
@@ -54,5 +50,17 @@
 
 #register-text {
     margin-top: 5px;
+    font-size: small;
+}
+
+.input-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: medium;
+}
+
+.input-error {
+    color: var(--error);
     font-size: small;
 }
